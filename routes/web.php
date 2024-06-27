@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Authcontroller;
 use App\Http\Controllers\customerAuthcontroller;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BrandController;
 
 // Main home route
 Route::get('/', function () {
@@ -25,6 +26,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [Authcontroller::class,'dashboard'])->name('admin_dashboard');
     //Route::get('admin/category', [CategoryController::class, 'index']);
     Route::resource('category', CategoryController::class);
+    Route::resource('brands', brandController::class);
 
 
     // Admin dashboard view

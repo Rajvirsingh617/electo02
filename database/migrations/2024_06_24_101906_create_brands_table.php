@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -11,11 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id('category_id');
-            $table->string('category_name')->nullable()->unique();
-            $table->string('description')->nullable();
-            $table->string('picture')->nullable();
+        Schema::create('brands', function (Blueprint $table) {
+            $table->id();
+            $table->string('brand_name')->nullable()->unique();
+            $table->string('brand_logo')->nullable();
+            $table->string('seo_meta_title')->nullable();
+            $table->text('seo_meta_desc')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('brands');
     }
 };

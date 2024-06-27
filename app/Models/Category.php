@@ -8,8 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    protected $fillable =[
+    //1. Property
+    protected $fillable = [
         'category_name',
-        'description'
+        'description',
+        'picture'
+        // Add other attributes that you want to be mass assignable
     ];
+
+    protected $primaryKey = 'category_id';
+
+    //2. Constructor
+
+    //3. method
 }
