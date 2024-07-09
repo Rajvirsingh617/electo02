@@ -1,0 +1,13 @@
+<html>
+    <body>
+        <head>
+<form method="POST" action="{{ route('posts.store') }}">
+    @csrf
+    <textarea name="content" id="editor"></textarea>
+    <button type="submit">Submit</button>
+</form>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+</head>
+</body>
+</html>

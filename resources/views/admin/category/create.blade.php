@@ -1,10 +1,9 @@
-
 <x-layout title="Create Category"><!-- I will pass data to the layout compoent using prop/ properties -->
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6 ">
+                <div class="col-sm-6 a_tbdr">
                     <h1 class="m-0">Add New Category</h1>
                 </div>
                 <!-- <div class="col-sm-6 a_tbdr text-right">
@@ -46,7 +45,7 @@
                                 @enderror
                                 <div class="form-group">
                                     <label for="cat_desc">Description</label>
-                                    <textarea rows="5" cols="" name="description" class="form-control" id="cat_desc" placeholder="Password"> </textarea>
+                                    <textarea rows="10" cols="" name="description" class="form-control" id="cat_desc" placeholder="Password"> </textarea>
                                 </div>
                                 @error('description')
                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -55,17 +54,16 @@
                                     @error('cat_image')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
-                                    <label for="exampleInputFile">File input</label>
+                                    <label for="exampleInputFile">File input (Please upload 1MB less file, jpg,jpeg or png only)</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" name="cat_image" class="custom-file-input" id="cat_imag" onchange="previewImage(event)">
+                                            <input type="file" name="cat_image" class="custom-file-input" id="exampleInputFile">
                                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                         </div>
-                                        
                                         <div class="input-group-append">
                                             <span class="input-group-text">Upload</span>
                                         </div>
-                                        <img id="preview" src="#" alt="your image" style="display:none; width:120px; height:80px; margin-top:5px;" />
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -82,16 +80,5 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
-    <script>
-        function previewImage(event) {
-            var reader = new FileReader();
-            reader.onload = function(){
-                var output = document.getElementById('preview');
-                output.src = reader.result;
-                output.style.display = 'block';
-            };
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    </script>
     <!-- /.content -->
 </x-layout>

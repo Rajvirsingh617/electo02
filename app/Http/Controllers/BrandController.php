@@ -65,7 +65,7 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
-        //
+        return 'show';
     }
 
     /**
@@ -74,6 +74,7 @@ class BrandController extends Controller
     public function edit(Brand $brand)
     {
         //
+        return view('admin.brands.edit',['brand'=>$brand]);
     }
 
     /**
@@ -82,12 +83,34 @@ class BrandController extends Controller
     public function update(Request $request, Brand $brand)
     {
         //
-    }
+        //File uploading logic
+        $request->validate([
+            'brand_name'=>'required|unique:brands',
+            'brand_logo' => 'mimes:jpg,jpeg,png|max:2024|dimensions:width=120,height=80',// 2024kb = 1mb
+            'seo_meta_title'=>'required',
+            'seo_meta_desc'=>'required|',
+        ]);
+        $file = $request->file('brand_logo');
+        $dst='';
+        if($file){
+            $path = $file->store('public/brand_images');
+            //The file is comming
+             // Extract the filename from the path
+            $filename = basename($path);    
+            $dst='/storage/brand_images/'.$filename;
+        $brand->update([
+            'brand_name'=>$request->input('brand_name'),
+            'brand_logo'=>$dst,
+           'seo_meta_title'=>$request->input('seo_meta_title'),
+           'seo_meta_desc'=>$request->input('seo_meta_title')
+        ]);
+        return back()->with ('sucsses','Brand Update Successfully');
+    }}
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Brand $brand)
+     public function destroy(Brand $brand)
     {
         {
             //Brand::

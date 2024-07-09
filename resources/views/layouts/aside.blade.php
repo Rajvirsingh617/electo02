@@ -1,4 +1,4 @@
-<!-- ========== HEADER SIDEBAR ========== -->
+A<!-- ========== HEADER SIDEBAR ========== -->
 <aside id="sidebarHeader1" class="u-sidebar u-sidebar--left"
     aria-labelledby="sidebarHeaderInvoker">
     <div class="u-sidebar__scroller">

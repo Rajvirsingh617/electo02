@@ -1,3 +1,4 @@
+
 <x-layout>
     <section class="content-header">
         <div class="container-fluid">
@@ -17,7 +18,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12"> 
+                <div class="col-md-12">
                     @if (Session::has('success'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <strong>{{ Session::get('success') }}</strong>
@@ -28,7 +29,8 @@
                         <div class="card-header">
                             <h3 class="card-title">New Brand</h3>
                         </div>
-                        <form method="POST" action="{{route('brands.store')}}" enctype="multipart/form-data">
+                       
+                        <form  action="{{route('brands.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -39,24 +41,22 @@
                                 @error('brand_name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
-                                
                                 <div class="form-group">
                                     <label for="exampleInputFile">Logo(w=120 , h=80)</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input name="brand_logo" type="file" class="custom-file-input" id="brand_logo" onchange="previewImage(event)">
+                                            <input type="file" name="brand_logo" class="custom-file-input" id="brand_logo">
                                             <label class="custom-file-label" for="brand_logo">Choose file</label>
                                         </div>
                                         <div class="input-group-append">
                                             <span class="input-group-text">Upload</span>
                                         </div>
                                     </div>
-                                    <img id="preview" src="#" alt="your image" style="display:none; width:120px; height:80px; margin-top:10px;" />  
+                                    <img id="preview" src="#" alt="your image" />
                                 </div>
                                 @error('brand_logo')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
-
                                 <div class="form-group">
                                     <label for="seo_meta_title">SEO - Meta Title</label>
                                     <input name="seo_meta_title" value="{{old('seo_meta_title')}}" type="text" class="form-control" id="seo_meta_title"
@@ -65,7 +65,6 @@
                                 @error('seo_meta_title')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
-
                                 <div class="form-group">
                                     <label for="seo_meta_desc">SEO - Meta Description</label>
                                     <textarea name="seo_meta_desc" class="form-control" id="seo_meta_desc" rows="5" cols="">{{old('seo_meta_desc')}}</textarea>
@@ -85,16 +84,4 @@
             </div>
         </div>
     </section>
-
-    <script>
-        function previewImage(event) {
-            var reader = new FileReader();
-            reader.onload = function(){
-                var output = document.getElementById('preview');
-                output.src = reader.result;
-                output.style.display = 'block';
-            };
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    </script>
 </x-layout>

@@ -4,7 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Authcontroller;
 use App\Http\Controllers\customerAuthcontroller;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BrandController;
+use App\Http\Middleware\AdminAuth;
+use App\Http\Controllers\SysteminfoController;
+
 
 // Main home route
 Route::get('/', function () {
@@ -13,19 +17,23 @@ Route::get('/', function () {
 
 // Authentication routes
 Route::post('/login', [Authcontroller::class, 'login'])->name('login');
+// Route::post('/posts', 'PostController@store')->name('posts.store');
 
 /* Admin Routes */
-Route::prefix('admin')->group(function () {
-    // Admin login view
+Route::prefix('admin')->middleware(AdminAuth::class)->group(function () { // /admin/login
+    Route::get('/',[SysteminfoController ::class, 'login'])->withoutMiddleware([AdminAuth::class]);
     Route::get('/login', function () {
-        return view('admin.login');
-    });
+        // Matches The "/admin/login" URL
+        return view('admin.login'); //login.blade.php
+    })->withoutMiddleware([AdminAuth::class]);
 
     // Admin logout
     Route::get('/logout', [Authcontroller::class, 'logout']);
+    // Route::get('/posts', [PostController::class, 'index']);
     Route::get('/dashboard', [Authcontroller::class,'dashboard'])->name('admin_dashboard');
     //Route::get('admin/category', [CategoryController::class, 'index']);
     Route::resource('category', CategoryController::class);
+    Route::resource('products', ProductController::class);
     Route::resource('brands', brandController::class);
 
 

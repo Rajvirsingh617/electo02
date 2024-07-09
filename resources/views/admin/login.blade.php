@@ -17,7 +17,8 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="/index2.html"><b>Admin</b>LTE</a>
+    <a href="/index2.html"></a>
+    <img width="300" src="{{ $aapData['app_logo'] }}" />
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -25,7 +26,7 @@
       <p class="login-box-msg">Sign in to start your session</p>
       @if (Session::has('failed'))
           <div class="alert alert-danger">
-              {{Session::get('failed')}}
+              {{ Session::get('failed') }}
           </div>
       @endif
       <form action="{{ route('login') }}" method="POST">
@@ -37,14 +38,11 @@
               <span class="fas fa-envelope"></span>
             </div>
           </div>
-          
-            @error('email')
+          @error('email')
               <div class="alert alert-danger" role="alert">
-                {{$message}}
+                {{ $message }}
               </div>
             @enderror
-          
-         
         </div>
         <div class="input-group mb-3">
           <input name="password" type="password" class="form-control" placeholder="Password">
@@ -55,7 +53,7 @@
           </div>
           @error('password')
               <div class="alert alert-danger" role="alert">
-                {{$message}}
+                {{ $message }}
               </div>
             @enderror
         </div>
@@ -97,6 +95,7 @@
     <!-- /.login-card-body -->
   </div>
 </div>
+  
 <!-- /.login-box -->
 
 <!-- jQuery -->
