@@ -22,9 +22,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Fetch system information from the database
-      /*   $app_name = SystemInfo::where('meta_name', 'app_name')->first()->meta_value ?? 'Default App Name';
-        $app_version = SystemInfo::where('meta_name', 'app_version')->first()->meta_value ?? '1.0';
-        $app_logo = SystemInfo::where('meta_name', 'app_logo')->first()->meta_value ?? 'path/to/default/logo.png';
+        $app_name = SystemInfo::where('meta_name', 'app_name')->first()->meta_value;
+        $app_version = SystemInfo::where('meta_name', 'app_version')->first()->meta_value;
+        $app_logo = SystemInfo::where('meta_name', 'app_logo')->first()->meta_value;
 
         // Share the data with all views
         $data = [
@@ -32,6 +32,6 @@ class AppServiceProvider extends ServiceProvider
             'app_version' => $app_version,
             'app_logo' => $app_logo
         ];
-        View::share('aapData', $data); */
+        View::share('aapData', $data);
     }
 }

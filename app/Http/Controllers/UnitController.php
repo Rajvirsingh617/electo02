@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\unit;
+use App\Models\Unit;
 use Illuminate\Http\Request;
+
 
 class UnitController extends Controller
 {
@@ -12,7 +13,8 @@ class UnitController extends Controller
      */
     public function index()
     {
-        //
+        $units = Unit::all();
+       return view('admin.units.index',['units'=> $units]); //
     }
 
     /**
@@ -20,21 +22,31 @@ class UnitController extends Controller
      */
     public function create()
     {
-        //
+    return view('admin.units.create');//
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
-    }
+{
+    $request->validate([
+        'unit_name' => 'required|max:255',
+        'unit_desc' => 'nullable|string',
+    ]);
+
+    Unit::create([
+        'unit_name' => $request->unit_name,
+        'unit_desc' => $request->unit_desc,
+    ]);
+
+    return redirect()->route('units.create')->with('success', 'Unit added successfully');
+}
 
     /**
      * Display the specified resource.
      */
-    public function show(unit $unit)
+    public function show(Unit $unit)
     {
         //
     }
@@ -42,15 +54,15 @@ class UnitController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(unit $unit)
+    public function edit(Unit $unit)
     {
-        //
+        return view('admin.units.edit', compact('unit'));//
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, unit $unit)
+    public function update(Request $request, Unit $unit)
     {
         //
     }
@@ -58,7 +70,7 @@ class UnitController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(unit $unit)
+    public function destroy(Unit $unit)
     {
         //
     }

@@ -1,4 +1,3 @@
-<!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('category.index') }}" class="brand-link">
@@ -34,54 +33,53 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Products Menu Item -->
                 <li class="nav-item">
+                    <a href="{{ route('products.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>Products</p>
+                    </a>
+                </li>
+
+                <!-- Category Menu Item -->
+                <li class="nav-item">
+                    <a href="{{ route('category.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>Category</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('units.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>Units</p>
+                    </a>
+                </li>
+
+                <!-- Brands Menu Item -->
+                <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
-                        <p>Products<i class="right fas fa-angle-left"></i></p>
+                        <p>
+                            Brands
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
                     </a>
-                    <ul class="nav nav-treeview" style="display: none;">
+                    <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('products.create') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p> All Product</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('category.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Category</p>
+                            <a href="{{ route('brands.index') }}" class="nav-link">
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>All Brands</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Brands<i class="right fas fa-angle-left"></i></p>
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>Brand Bulk Import</p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('brands.index') }}" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>All Brands</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Brand Bulk Import</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </li>
             </ul>
         </nav>
-        <!-- /.sidebar-menu -->
     </div>
 </aside>
-
-<!-- CSS for Centering -->

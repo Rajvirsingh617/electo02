@@ -13,12 +13,33 @@
   <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+
+  <style>
+    body {
+      background: url('https://png.pngtree.com/thumb_back/fh260/background/20201026/pngtree-futuristic-shape-abstract-background-chemistry-technology-concept-for-website-image_438818.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+    .login-box {
+      margin-top: 100px;
+    }
+    .login-logo img {
+      width: 150px;
+    }
+    .login-card-body {
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+  </style>
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="/index2.html"></a>
-    <img width="300" src="{{ $aapData['app_logo'] }}" />
+    <a href="/index2.html"><img src="{{ $aapData['app_logo'] }}" alt="App Logo"></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">

@@ -31,20 +31,20 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>#Id</th>
-                                        <th>Category Name</th>
-                                        <th>Description</th>
-                                        <th>Picture</th>
-                                        <th>Action</th>
+                                        <th style="text-align: center;">#Id</th>
+                                        <th style="text-align: center;">Category Name</th>
+                                        <th style="text-align: center;">Description</th>
+                                        <th style="text-align: center;">Picture</th>
+                                        <th style="text-align: center;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($categories as $category)
                                         <tr>
-                                            <td>{{$category->category_id}}</td>
-                                            <td>{{$category->category_name }}</td>
-                                            <td>{{$category->description}}</td>
-                                            <td>
+                                            <td style="text-align: center;">{{$category->category_id}}</td>
+                                            <td style="text-align: center;">{{$category->category_name }}</td>
+                                            <td style="text-align: center;">{{$category->description}}</td>
+                                            <td style="text-align: center;">
                                                 @if(isset($category->picture) && !empty($category->picture))
                                                 <img width="100" src="{{ asset('/').ltrim($category->picture,'/') }}" />
                                                 @else
@@ -52,8 +52,8 @@
                                                     &#x2D;          
                                                     -
                                                 @endif
-                                            </td>
-                                            <td>
+                                            </td>       
+                                            <td style="text-align: center;">
                                                 <a href="#" class="btn btn-outline-info rounded-circle">
                                                     <i class="fa-regular fa-pen-to-square"></i>
                                                 </a>
@@ -63,6 +63,7 @@
                                                     <button class="btn btn-outline-danger rounded-circle" onclick="return confirm('Do you really want to delete?')">
                                                         <i class="fa-solid fa-trash"></i>
                                                     </button>
+                                                    </td>
                                                 </form>
                                             </td>
                                         </tr>

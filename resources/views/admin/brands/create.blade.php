@@ -1,4 +1,3 @@
-
 <x-layout>
     <section class="content-header">
         <div class="container-fluid">
@@ -42,17 +41,17 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                                 <div class="form-group">
-                                    <label for="exampleInputFile">Logo(w=120 , h=80)</label>
+                                    <label for="brand_logo">Logo(w=120 , h=80)</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" name="brand_logo" class="custom-file-input" id="brand_logo">
-                                            <label class="custom-file-label" for="brand_logo">Choose file</label>
+                                            <input type="file" name="brand_logo" class="custom-file-input" id="brand_logo_input" onchange="previewImage('brand_logo_preview', this)">
+                                            <label class="custom-file-label" for="brand_logo_input">Choose file</label>
                                         </div>
                                         <div class="input-group-append">
                                             <span class="input-group-text">Upload</span>
                                         </div>
                                     </div>
-                                    <img id="preview" src="#" alt="your image" />
+                                    <img id="brand_logo_preview" src="#" alt="brand_logo" style="display: none; margin-top: 10px; max-width: 100px;">
                                 </div>
                                 @error('brand_logo')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -84,4 +83,23 @@
             </div>
         </div>
     </section>
+    <script>
+        function previewImage(previewId, input) {
+            const preview = document.getElementById(previewId);
+            const file = input.files[0];
+            const reader = new FileReader();
+
+            reader.onloadend = function() {
+                preview.src = reader.result;
+                preview.style.display = 'block';
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "";
+                preview.style.display = 'none';
+            }
+        }
+    </script>
 </x-layout>

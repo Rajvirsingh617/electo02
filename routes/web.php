@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BrandController;
 use App\Http\Middleware\AdminAuth;
 use App\Http\Controllers\SysteminfoController;
+use App\Http\Controllers\UnitController;
 
 
 // Main home route
@@ -35,6 +36,7 @@ Route::prefix('admin')->middleware(AdminAuth::class)->group(function () { // /ad
     Route::resource('category', CategoryController::class);
     Route::resource('products', ProductController::class);
     Route::resource('brands', brandController::class);
+    Route::resource('units',UnitController::class);
 
 
     // Admin dashboard view
